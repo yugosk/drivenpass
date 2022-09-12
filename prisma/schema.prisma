@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  password    String
+  credentials credentials[]
+  notes       notes[]
+  cards       cards[]
+  networks    networks[]
+}
+
+model credentials {
+  id       Int    @id @default(autoincrement())
+  user     users  @relation(fields: [userId], references: [id])
+  userId   Int
+  title    String
+  url      String
+  username String
+  password String
+
+  @@unique([userId, title])
+}
+
+model notes {
+  id          Int    @id @default(autoincrement())
+  user        users  @relation(fields: [userId], references: [id])
+  userId      Int
+  title       String
+  description String
+
+  @@unique([userId, title])
+}
+
+model cards {
+  id             Int      @id @default(autoincrement())
+  user           users    @relation(fields: [userId], references: [id])
+  userId         Int
+  title          String
+  number         String
+  name           String
+  cvv            String
+  expirationDate DateTime
+  password       String
+  isVirtual      Boolean
+  type           Type
+
+  @@unique([userId, title])
+}
+
+model networks {
+  id       Int    @id @default(autoincrement())
+  user     users  @relation(fields: [userId], references: [id])
+  userId   Int
+  title    String
+  name     String
+  password String
+
+  @@unique([name, password])
+}
+
+enum Type {
+  credit
+  debit
+  both
+}
