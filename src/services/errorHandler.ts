@@ -17,7 +17,8 @@ export function errorHandler(err: String | void): IError {
       break;
     case "err_unauthorized":
       response.code = 401;
-      response.message = "This credential is not yours";
+      response.message = "Unauthorized";
+      break;
     case "card_not_found":
       response.code = 404;
       response.message = "Invalid card ID";

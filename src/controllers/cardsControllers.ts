@@ -10,11 +10,16 @@ import { errorHandler } from "../services/errorHandler";
 
 export async function postCard(req: Request, res: Response) {
   const user = res.locals.user;
-  const card = { ...req.body, userId: user.id };
+  const card = {
+    ...req.body,
+    userId: user.id,
+    expirationDate: new Date(req.body.expirationDate),
+  };
   try {
     await newCard(card);
     res.status(201).send("Card created successfully");
   } catch (err: ErrorEvent | any) {
+    console.log(err);
     const error = errorHandler(err);
     res.status(error.code).send(error.message);
   }

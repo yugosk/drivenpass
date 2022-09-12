@@ -54,7 +54,7 @@ export async function deleteNetwork(id: number, userId: number) {
     const network = await readById(id);
 
     if (!network) {
-      throw "credential_not_found";
+      throw "network_not_found";
     }
 
     if (network.userId !== userId) {

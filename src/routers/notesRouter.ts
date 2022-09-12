@@ -1,9 +1,9 @@
 import { Router, IRouter } from "express";
-import { postCredential } from "../controllers/credentialsControllers";
 import {
   deleteNotes,
   getNotes,
   getNotesById,
+  postNotes,
 } from "../controllers/notesControllers";
 import { validateToken } from "../middlewares/authMiddleware";
 import validateSchema from "../middlewares/schemaMiddleware";
@@ -15,7 +15,7 @@ notesRouter.post(
   "/notes",
   validateSchema(noteSchema),
   validateToken,
-  postCredential
+  postNotes
 );
 
 notesRouter.get("/notes", validateToken, getNotes);

@@ -12,16 +12,16 @@ import networkSchema from "../schemas/networkSchema";
 const networksRouter: IRouter = Router();
 
 networksRouter.post(
-  "/cards",
+  "/networks",
   validateSchema(networkSchema),
   validateToken,
   postNetwork
 );
 
-networksRouter.get("/cards", validateToken, getNetworks);
+networksRouter.get("/networks", validateToken, getNetworks);
 
-networksRouter.get("/cards/:id", validateToken, getNetworkById);
+networksRouter.get("/networks/:id", validateToken, getNetworkById);
 
-networksRouter.delete("/cards/:id", validateToken, deleteNetwork);
+networksRouter.delete("/networks/:id", validateToken, deleteNetwork);
 
 export default networksRouter;
