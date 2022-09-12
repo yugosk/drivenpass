@@ -15,6 +15,13 @@ export function errorHandler(err: String | void): IError {
       response.code = 401;
       response.message = "Invalid password";
       break;
+    case "err_unauthorized":
+      response.code = 401;
+      response.message = "This credential is not yours";
+    case "credential_not_found":
+      response.code = 404;
+      response.message = "Invalid credential ID";
+      break;
     case "email_not_found":
       response.code = 404;
       response.message = "This email is not registered yet";
@@ -23,6 +30,9 @@ export function errorHandler(err: String | void): IError {
       response.code = 409;
       response.message = "This email is already in use";
       break;
+    case "title_in_use":
+      response.code = 409;
+      response.message = "You have already used this title for a credential";
     default:
       return response;
   }
