@@ -1,56 +1,56 @@
 import { Request, Response } from "express";
 import {
-  newCard,
-  singleCard,
-  userCards,
-  deleteCard as deleteOne,
-} from "../services/cardsServices";
+  newNetwork,
+  singleNetwork,
+  userNetworks,
+  deleteNetwork as deleteOne,
+} from "../services/networksServices";
 
 import { errorHandler } from "../services/errorHandler";
 
-export async function postCard(req: Request, res: Response) {
+export async function postNetwork(req: Request, res: Response) {
   const user = res.locals.user;
-  const card = { ...req.body, userId: user.id };
+  const network = { ...req.body, userId: user.id };
   try {
-    await newCard(card);
-    res.status(201).send("Card created successfully");
+    await newNetwork(network);
+    res.status(201).send("Network created successfully");
   } catch (err: ErrorEvent | any) {
     const error = errorHandler(err);
     res.status(error.code).send(error.message);
   }
 }
 
-export async function getCards(req: Request, res: Response) {
+export async function getNetworks(req: Request, res: Response) {
   const { id: userId } = res.locals.user;
   try {
-    const cards = await userCards(userId);
-    res.send(cards);
+    const networks = await userNetworks(userId);
+    res.send(networks);
   } catch (err: ErrorEvent | any) {
     const error = errorHandler(err);
     res.status(error.code).send(error.message);
   }
 }
 
-export async function getCardById(req: Request, res: Response) {
+export async function getNetworkById(req: Request, res: Response) {
   const { id: userId } = res.locals.user;
   const id = Number(req.params.id);
 
   try {
-    const card = await singleCard(id, userId);
-    res.send(card);
+    const network = await singleNetwork(id, userId);
+    res.send(network);
   } catch (err: ErrorEvent | any) {
     const error = errorHandler(err);
     res.status(error.code).send(error.message);
   }
 }
 
-export async function deleteCard(req: Request, res: Response) {
+export async function deleteNetwork(req: Request, res: Response) {
   const { id: userId } = res.locals.user;
   const id = Number(req.params.id);
 
   try {
     await deleteOne(id, userId);
-    res.status(200).send("Card deleted succesfully");
+    res.status(200).send("Network deleted succesfully");
   } catch (err: ErrorEvent | any) {
     const error = errorHandler(err);
     res.status(error.code).send(error.message);

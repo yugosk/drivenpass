@@ -64,7 +64,7 @@ export async function deleteCard(id: number, userId: number) {
     const card = await readById(id);
 
     if (!card) {
-      throw "credential_not_found";
+      throw "card_not_found";
     }
 
     if (card.userId !== userId) {
