@@ -22,6 +22,10 @@ export function errorHandler(err: String | void): IError {
       response.code = 404;
       response.message = "Invalid credential ID";
       break;
+    case "notes_not_found":
+      response.code = 404;
+      response.message = "Invalid notes ID";
+      break;
     case "email_not_found":
       response.code = 404;
       response.message = "This email is not registered yet";
