@@ -41,10 +41,10 @@
 - GET /credentials:
   Using authentication Bearer token, get the credentials you posted before.
 
-- GET /credentials./:id:
+- GET /credentials/:id:
   Using authentication Bearer token, get a specific credential registered in the database.
 
-- DELETE /credentials./:id:
+- DELETE /credentials/:id:
   Using authentication Bearer token, delete credentials from the database.
 
 - ### /notes:
@@ -61,10 +61,10 @@
 - GET /notes:
   Using authentication Bearer token, get the notes you posted before.
 
-- GET /notes./:id:
+- GET /notes/:id:
   Using authentication Bearer token, get a specific note.
 
-- DELETE /notes./:id:
+- DELETE /notes/:id:
   Using authentication Bearer token, delete a note from the database.
 
 - ### /cards:
@@ -86,10 +86,10 @@
 - GET /cards:
   Using authentication Bearer token, get the cards you posted before.
 
-- GET /cards./:id:
+- GET /cards/:id:
   Using authentication Bearer token, get a specific card.
 
-- DELETE /notes./:id:
+- DELETE /notes/:id:
   Using authentication Bearer token, delete a card from the database.
 
 - ### /networks:
@@ -107,8 +107,8 @@
 - GET /networks:
   Using authentication Bearer token, get the networks you posted before.
 
-- GET /networks./:id:
+- GET /networks/:id:
   Using authentication Bearer token, get a specific network.
 
-- DELETE /networks./:id:
+- DELETE /networks/:id:
   Using authentication Bearer token, delete a network from the database.
